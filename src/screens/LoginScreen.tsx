@@ -9,8 +9,12 @@ import {
 import React from 'react';
 import {useTheme} from '@utils/ThemeContext';
 
-const LoginScreen = () => {
+const LoginScreen = ({onLogin}: {onLogin: () => void}) => {
   const {colors} = useTheme();
+
+  const handleLogin = async () => {
+    onLogin();
+  };
 
   return (
     <View style={[styles.container, {backgroundColor: colors.background}]}>
@@ -34,7 +38,7 @@ const LoginScreen = () => {
       />
       <TouchableOpacity
         style={[styles.button, {backgroundColor: colors.primary}]}
-        onPress={() => {}}>
+        onPress={handleLogin}>
         <Text style={[styles.buttonText, {color: colors.text}]}>Login</Text>
       </TouchableOpacity>
     </View>
