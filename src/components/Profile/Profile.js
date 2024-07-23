@@ -1,34 +1,29 @@
+import React, {useState} from 'react';
 import {
   ScrollView,
   StyleSheet,
+  Switch,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
 
+import {BottomSlideDialog} from '@components/index';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {useTheme} from '@utils/ThemeContext';
+import {useTranslation} from 'react-i18next';
 
 const Profile = () => {
-  const {colors} = useTheme();
+  const {colors, isDark, toggleTheme} = useTheme();
+  const {t} = useTranslation();
   const navigation = useNavigation();
+  const [logoutDialogVisible, setLogoutDialogVisible] = useState(false);
 
   const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: colors.background,
-    },
-    header: {
-      backgroundColor: colors.primary,
-      padding: 16,
-      alignItems: 'center',
-    },
-    headerText: {
-      color: colors.text,
-      fontSize: 20,
-      fontWeight: 'bold',
     },
     profileInfo: {
       padding: 16,
@@ -69,23 +64,44 @@ const Profile = () => {
       fontSize: 16,
       color: colors.text,
     },
-    editIcon: {
-      position: 'absolute',
-      top: 16,
-      right: 16,
+    themeSwitch: {
+      marginLeft: 'auto',
+    },
+    logoutText: {
+      color: 'red',
     },
   });
 
-  const MenuItem = ({icon, text, onPress}) => (
+  const handleLogout = () => {
+    setLogoutDialogVisible(true);
+  };
+
+  const confirmLogout = () => {
+    setLogoutDialogVisible(false);
+    // Implement your logout logic here
+    console.log('User logged out');
+    // For example, you might clear the auth token and navigate to the login screen:
+    // AsyncStorage.removeItem('authToken');
+    // navigation.reset({
+    //   index: 0,
+    //   routes: [{ name: 'Login' }],
+    // });
+  };
+
+  const MenuItem = ({icon, text, onPress, rightElement, textStyle}) => (
     <TouchableOpacity style={styles.menuItem} onPress={onPress}>
       <Icon name={icon} size={24} color={colors.primary} />
-      <Text style={styles.menuText}>{text}</Text>
-      <Icon
-        name="chevron-right"
-        size={24}
-        color={colors.text}
-        style={{marginLeft: 'auto'}}
-      />
+      <Text style={[styles.menuText, textStyle]}>{text}</Text>
+      {rightElement ? (
+        rightElement
+      ) : (
+        <Icon
+          name="chevron-right"
+          size={24}
+          color={colors.text}
+          style={{marginLeft: 'auto'}}
+        />
+      )}
     </TouchableOpacity>
   );
 
@@ -104,18 +120,47 @@ const Profile = () => {
         </View>
         <MenuItem
           icon="location-on"
-          text="Adreslerim"
-          onPress={() => {
-            navigation.navigate('Addresses');
-            console.log('hello');
-          }}
+          text={t('addresses')}
+          onPress={() => navigation.navigate('Addresses')}
         />
-        <MenuItem icon="favorite" text="Favori İşletmelerim" />
-        <MenuItem icon="history" text="Geçmiş Siparişlerim" />
-        <MenuItem icon="payment" text="Ödeme Yöntemlerim" />
-        <MenuItem icon="receipt" text="Fatura Bilgilerim" />
-        <MenuItem icon="notifications" text="İletişim Tercihleri" />
+        <MenuItem icon="favorite" text={t('favoriteBusinesses')} />
+        <MenuItem icon="history" text={t('orderHistory')} />
+        <MenuItem icon="payment" text={t('paymentMethods')} />
+        <MenuItem icon="receipt" text={t('invoiceInformation')} />
+        <MenuItem
+          icon="language"
+          text={t('language')}
+          onPress={() => navigation.navigate('Language')}
+        />
+        <MenuItem
+          icon="brightness-6"
+          text={t('darkMode')}
+          rightElement={
+            <Switch
+              style={styles.themeSwitch}
+              value={isDark}
+              onValueChange={toggleTheme}
+              trackColor={{false: colors.border, true: colors.primary}}
+              thumbColor={isDark ? colors.background : colors.text}
+            />
+          }
+        />
+        <MenuItem
+          icon="exit-to-app"
+          text={t('logout')}
+          onPress={handleLogout}
+          textStyle={styles.logoutText}
+        />
       </ScrollView>
+      <BottomSlideDialog
+        visible={logoutDialogVisible}
+        title={t('logoutConfirmTitle')}
+        message={t('logoutConfirmMessage')}
+        onCancel={() => setLogoutDialogVisible(false)}
+        onConfirm={confirmLogout}
+        cancelText={t('cancel')}
+        confirmText={t('logout')}
+      />
     </View>
   );
 };

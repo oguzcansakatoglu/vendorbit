@@ -68,7 +68,7 @@ function Home() {
         tabBarStyle: (route => {
           const routeName = getFocusedRouteNameFromRoute(route) ?? '';
 
-          if (routeName === 'Addresses') {
+          if (['Addresses', 'Language']?.includes(routeName)) {
             return {display: 'none'};
           }
           return {
