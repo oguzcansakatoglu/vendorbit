@@ -1,0 +1,25 @@
+{
+  "welcome": {
+    "title": "Hoş Geldiniz",
+    "loginButton": "Giriş Yap",
+    "signupButton": "Kayıt Ol"
+  },
+  "login": {
+    "title": "Giriş",
+    "emailPlaceholder": "E-posta",
+    "passwordPlaceholder": "Şifre",
+    "loginButton": "Giriş Yap"
+  },
+  "signup": {
+    "title": "Kayıt",
+    "namePlaceholder": "Ad",
+    "emailPlaceholder": "E-posta",
+    "passwordPlaceholder": "Şifre",
+    "signupButton": "Kayıt Ol"
+  },
+  "common": {
+    "darkMode": "Karanlık Mod",
+    "lightMode": "Aydınlık Mod",
+    "language": "Dil"
+  }
+}

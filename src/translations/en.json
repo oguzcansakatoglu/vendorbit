@@ -1,0 +1,25 @@
+{
+  "welcome": {
+    "title": "Welcome",
+    "loginButton": "Login",
+    "signupButton": "Sign Up"
+  },
+  "login": {
+    "title": "Login",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "loginButton": "Login"
+  },
+  "signup": {
+    "title": "Sign Up",
+    "namePlaceholder": "Name",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "signupButton": "Sign Up"
+  },
+  "common": {
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "language": "Language"
+  }
+}
