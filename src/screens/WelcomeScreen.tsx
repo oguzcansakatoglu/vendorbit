@@ -19,7 +19,7 @@ type Props = {
 function WelcomeScreen({navigation}: Props) {
   const {colors} = useTheme();
   const {t, i18n} = useTranslation();
-  const {googleSignIn} = useAuth();
+  const {googleSignIn, anonymousSignIn} = useAuth();
 
   const toggleLanguage = () => {
     const newLang = i18n.language === 'en' ? 'tr' : 'en';
@@ -50,6 +50,13 @@ function WelcomeScreen({navigation}: Props) {
         onPress={googleSignIn}>
         <Text style={[styles.buttonText, {color: colors.secondary}]}>
           Google Sign in
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.button, {backgroundColor: colors.text}]}
+        onPress={anonymousSignIn}>
+        <Text style={[styles.buttonText, {color: colors.secondary}]}>
+          Anonim
         </Text>
       </TouchableOpacity>
       <TouchableOpacity

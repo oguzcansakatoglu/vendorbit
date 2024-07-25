@@ -19,8 +19,7 @@ const Test = () => {
   const [visible, setVisible] = useState(false);
   return (
     <View style={[{backgroundColor: colors.background, height: '100%'}]}>
-      <Ionicons name="ios-home-outline" size={20} />
-      <Button title="Modal" onPress={() => setVisible(true)} />
+      <Ionicons name="business" size={20} />
       <Modal
         isVisible={visible}
         loading={loading}

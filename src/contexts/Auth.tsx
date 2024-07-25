@@ -51,6 +51,14 @@ export const Auth: React.FC<{children: React.ReactNode}> = ({children}) => {
     }
   };
 
+  const anonymousSignIn = async () => {
+    try {
+      await auth().signInAnonymously();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const googleSignIn = async () => {
     try {
       await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
@@ -85,7 +93,15 @@ export const Auth: React.FC<{children: React.ReactNode}> = ({children}) => {
 
   return (
     <AuthContext.Provider
-      value={{user, loading, signUp, signIn, signOut, googleSignIn}}>
+      value={{
+        user,
+        loading,
+        signUp,
+        signIn,
+        signOut,
+        googleSignIn,
+        anonymousSignIn,
+      }}>
       {children}
     </AuthContext.Provider>
   );
