@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "658919642567",
+    "project_id": "co-x-f6697",
+    "storage_bucket": "co-x-f6697.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658919642567:android:f55f39359989834d3bb5e2",
+        "android_client_info": {
+          "package_name": "com.osaka.cox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658919642567-l7ekhkfckhu2bdns4223gmlmcce1p1nn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.osaka.cox",
+            "certificate_hash": "7402e51e03504f741f89368f379c0170ca98994a"
+          }
+        },
+        {
+          "client_id": "658919642567-n20gf24tj46ka866pi6f9kbvapqrktc3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcpu4NxfBm26dg9mHt9I087S_DhLvrY5U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658919642567-n20gf24tj46ka866pi6f9kbvapqrktc3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "658919642567-u1m5jqlr20osscsrnit9qnhmsblv3t77.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.osaka.cox"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

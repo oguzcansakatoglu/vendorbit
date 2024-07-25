@@ -1,16 +1,40 @@
 import {
+  Alert,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
+import React, {useState} from 'react';
 
-import React from 'react';
+import {useAuth} from '../contexts/Auth';
 import {useTheme} from '@utils/ThemeContext';
 
 const SignupScreen: React.FC = () => {
   const {colors} = useTheme();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const {signUp} = useAuth();
+
+  const handleSignup = async () => {
+    if (!name || !email || !password) {
+      Alert.alert('Error', 'Please fill in all fields');
+      return;
+    }
+
+    try {
+      await signUp(email, password, name);
+      Alert.alert('Success', 'Account created successfully');
+      // Navigate to the next screen or perform any other action
+    } catch (error: any) {
+      Alert.alert('Error', error.message);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {};
 
   return (
     <View style={[styles.container, {backgroundColor: colors.background}]}>
@@ -22,6 +46,8 @@ const SignupScreen: React.FC = () => {
         ]}
         placeholder="Name"
         placeholderTextColor={colors.textSecondary}
+        value={name}
+        onChangeText={setName}
       />
       <TextInput
         style={[
@@ -30,6 +56,10 @@ const SignupScreen: React.FC = () => {
         ]}
         placeholder="Email"
         placeholderTextColor={colors.textSecondary}
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+        autoCapitalize="none"
       />
       <TextInput
         style={[
@@ -38,14 +68,19 @@ const SignupScreen: React.FC = () => {
         ]}
         placeholder="Password"
         placeholderTextColor={colors.textSecondary}
+        value={password}
+        onChangeText={setPassword}
         secureTextEntry
       />
       <TouchableOpacity
         style={[styles.button, {backgroundColor: colors.primary}]}
-        onPress={() => {
-          /* Handle signup */
-        }}>
+        onPress={handleSignup}>
         <Text style={[styles.buttonText, {color: colors.text}]}>Sign Up</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.button, {backgroundColor: colors.primary}]}
+        onPress={handleGoogleSignIn}>
+        <Text style={[styles.buttonText, {color: colors.text}]}>google</Text>
       </TouchableOpacity>
     </View>
   );

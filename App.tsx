@@ -1,12 +1,14 @@
-import {Home, LoginScreen, SignupScreen, WelcomeScreen} from '@screens/index';
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
+/* eslint-disable react/no-unstable-nested-components */
+import {Auth, useAuth} from './src/contexts/Auth'; // Update the path as needed
+import {Home, LoginScreen, SignupScreen, WelcomeScreen} from '@screens/index';
 import {Switch, Text, View} from 'react-native';
 import {ThemeProvider, useTheme} from '@utils/ThemeContext';
 
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {I18nextProvider} from 'react-i18next';
 import {NavigationContainer} from '@react-navigation/native';
+import React from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {createStackNavigator} from '@react-navigation/stack';
 import i18n from '@utils/i18n';
@@ -22,12 +24,15 @@ export type RootStackParamList = {
 
 function MainApp(): React.JSX.Element {
   const {isDarkMode, toggleTheme, colors} = useTheme();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const {user, loading, signIn, signUp, signOut} = useAuth();
 
-  // Function to handle successful authentication
-  const handleAuthentication = () => {
-    setIsAuthenticated(true);
-  };
+  if (loading) {
+    return (
+      <View>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
 
   return (
     <NavigationContainer>
@@ -41,11 +46,19 @@ function MainApp(): React.JSX.Element {
             fontWeight: 'bold',
           },
         }}>
-        {isAuthenticated ? (
+        {user ? (
           <Stack.Screen
             name="Main"
             component={Home}
-            options={{headerShown: false}}
+            options={{
+              headerRight: () => (
+                <Text
+                  onPress={signOut}
+                  style={{color: colors.text, marginRight: 10}}>
+                  Sign Out
+                </Text>
+              ),
+            }}
           />
         ) : (
           <>
@@ -53,7 +66,6 @@ function MainApp(): React.JSX.Element {
               name="Welcome"
               component={WelcomeScreen}
               options={{
-                // eslint-disable-next-line react/no-unstable-nested-components
                 headerRight: () => (
                   <View
                     style={{
@@ -75,14 +87,10 @@ function MainApp(): React.JSX.Element {
               }}
             />
             <Stack.Screen name="Login">
-              {props => (
-                <LoginScreen {...props} onLogin={handleAuthentication} />
-              )}
+              {(props: any) => <LoginScreen {...props} onLogin={signIn} />}
             </Stack.Screen>
             <Stack.Screen name="Signup">
-              {(props: any) => (
-                <SignupScreen {...props} onSignup={handleAuthentication} />
-              )}
+              {(props: any) => <SignupScreen {...props} onSignup={signUp} />}
             </Stack.Screen>
           </>
         )}
@@ -95,11 +103,13 @@ function App(): React.JSX.Element {
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <SafeAreaProvider>
-        <I18nextProvider i18n={i18n}>
-          <ThemeProvider>
-            <MainApp />
-          </ThemeProvider>
-        </I18nextProvider>
+        <Auth>
+          <I18nextProvider i18n={i18n}>
+            <ThemeProvider>
+              <MainApp />
+            </ThemeProvider>
+          </I18nextProvider>
+        </Auth>
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );

@@ -1,19 +1,45 @@
 import {
+  Alert,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
+import React, {useState} from 'react';
 
-import React from 'react';
+import {RootStackParamList} from '../../App'; // Adjust the import path as needed
+import {StackNavigationProp} from '@react-navigation/stack';
+import {useAuth} from '../contexts/Auth';
 import {useTheme} from '@utils/ThemeContext';
 
-const LoginScreen = ({onLogin}: {onLogin: () => void}) => {
+type LoginScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'Login'
+>;
+
+type Props = {
+  navigation: LoginScreenNavigationProp;
+};
+
+const LoginScreen: React.FC<Props> = ({navigation}) => {
   const {colors} = useTheme();
+  const {signIn} = useAuth();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
-    onLogin();
+    if (!email || !password) {
+      Alert.alert('Error', 'Please enter both email and password');
+      return;
+    }
+
+    try {
+      await signIn(email, password);
+      // If signIn is successful, the Auth context will update and App.js will redirect to the Main screen
+    } catch (error: any) {
+      Alert.alert('Error', error.message);
+    }
   };
 
   return (
@@ -26,6 +52,10 @@ const LoginScreen = ({onLogin}: {onLogin: () => void}) => {
         ]}
         placeholder="Email"
         placeholderTextColor={colors.textSecondary}
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+        autoCapitalize="none"
       />
       <TextInput
         style={[
@@ -34,12 +64,19 @@ const LoginScreen = ({onLogin}: {onLogin: () => void}) => {
         ]}
         placeholder="Password"
         placeholderTextColor={colors.textSecondary}
+        value={password}
+        onChangeText={setPassword}
         secureTextEntry
       />
       <TouchableOpacity
         style={[styles.button, {backgroundColor: colors.primary}]}
         onPress={handleLogin}>
         <Text style={[styles.buttonText, {color: colors.text}]}>Login</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
+        <Text style={[styles.linkText, {color: colors.primary}]}>
+          Don't have an account? Sign up
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -72,6 +109,10 @@ const styles = StyleSheet.create({
   buttonText: {
     textAlign: 'center',
     fontWeight: 'bold',
+  },
+  linkText: {
+    marginTop: 15,
+    textDecorationLine: 'underline',
   },
 });
 

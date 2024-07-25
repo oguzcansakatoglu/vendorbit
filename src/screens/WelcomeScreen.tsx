@@ -3,6 +3,7 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {RootStackParamList} from '../../App';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {useAuth} from '../contexts/Auth';
 import {useTheme} from '@utils/ThemeContext';
 import {useTranslation} from 'react-i18next';
 
@@ -18,6 +19,7 @@ type Props = {
 function WelcomeScreen({navigation}: Props) {
   const {colors} = useTheme();
   const {t, i18n} = useTranslation();
+  const {googleSignIn} = useAuth();
 
   const toggleLanguage = () => {
     const newLang = i18n.language === 'en' ? 'tr' : 'en';
@@ -41,6 +43,13 @@ function WelcomeScreen({navigation}: Props) {
         onPress={() => navigation.navigate('Signup')}>
         <Text style={[styles.buttonText, {color: colors.text}]}>
           {t('welcome.signupButton')}
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.button, {backgroundColor: colors.text}]}
+        onPress={googleSignIn}>
+        <Text style={[styles.buttonText, {color: colors.secondary}]}>
+          Google Sign in
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
