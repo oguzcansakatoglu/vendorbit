@@ -81,3 +81,5 @@ To learn more about React Native, take a look at the following resources:
 # To do list
 
 - replace google-services.json
+- android google sign in https://www.youtube.com/watch?v=J9qDaFTP9ao&t=334s
+- ios google sign in https://www.youtube.com/watch?v=9YzxZeMjtlY

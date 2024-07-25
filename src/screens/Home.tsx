@@ -19,6 +19,7 @@ const Test = () => {
   const [visible, setVisible] = useState(false);
   return (
     <View style={[{backgroundColor: colors.background, height: '100%'}]}>
+      <Ionicons name="ios-home-outline" size={20} />
       <Button title="Modal" onPress={() => setVisible(true)} />
       <Modal
         isVisible={visible}
@@ -62,9 +63,6 @@ function Home() {
         headerTitleStyle: {
           fontWeight: 'bold',
         },
-        // tabBarStyle: {
-        //   backgroundColor: colors.primary,
-        // },
         tabBarStyle: (route => {
           const routeName = getFocusedRouteNameFromRoute(route) ?? '';
 

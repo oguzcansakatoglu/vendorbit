@@ -7,18 +7,18 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:658919642567:android:f55f39359989834d3bb5e2",
+        "mobilesdk_app_id": "1:658919642567:android:8128747fae001c553bb5e2",
         "android_client_info": {
-          "package_name": "com.osaka.cox"
+          "package_name": "com.rabbit"
         }
       },
       "oauth_client": [
         {
-          "client_id": "658919642567-l7ekhkfckhu2bdns4223gmlmcce1p1nn.apps.googleusercontent.com",
+          "client_id": "658919642567-ovuhffcjf2s9lgdeedjdnr7l2i9uurli.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.osaka.cox",
-            "certificate_hash": "7402e51e03504f741f89368f379c0170ca98994a"
+            "package_name": "com.rabbit",
+            "certificate_hash": "beda51184d06f4d870766fcddd9c335813411c37"
           }
         },
         {
