@@ -14,8 +14,8 @@
 		162C46FD10866F5888BB4708 /* Pods_rabbit_rabbitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B554730984D649269CE87BCC /* Pods_rabbit_rabbitTests.framework */; };
 		6F5B9B54F1823A83C098B95E /* Pods_rabbit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A61FADCE2172EF9930A56521 /* Pods_rabbit.framework */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		A763EFBB2C5250D000C853B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A763EFBA2C5250D000C853B9 /* GoogleService-Info.plist */; };
-		A7BFCF4D2C52CA1D00F43330 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = A7BFCF4C2C52CA1D00F43330 /* Fonts */; };
+		A7BFCF522C52DA2200F43330 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7BFCF512C52DA2200F43330 /* GoogleService-Info.plist */; };
+		A7EDC8332C5910BE00852010 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = A7EDC8322C5910BE00852010 /* Fonts */; };
 		CC914A62FA21DC428C5A8930 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6F1781678585F420BA0FF2AE /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
@@ -46,8 +46,9 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = rabbit/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CE1D2D71A13D9727E80EA78 /* Pods-rabbit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rabbit.debug.xcconfig"; path = "Target Support Files/Pods-rabbit/Pods-rabbit.debug.xcconfig"; sourceTree = "<group>"; };
 		A61FADCE2172EF9930A56521 /* Pods_rabbit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rabbit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A763EFBA2C5250D000C853B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		A7BFCF4C2C52CA1D00F43330 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = "../node_modules/react-native-vector-icons/Fonts"; sourceTree = "<group>"; };
+		A7BFCF4E2C52D1CC00F43330 /* rabbit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = rabbit.entitlements; path = rabbit/rabbit.entitlements; sourceTree = "<group>"; };
+		A7BFCF512C52DA2200F43330 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A7EDC8322C5910BE00852010 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = "../node_modules/react-native-vector-icons/Fonts"; sourceTree = "<group>"; };
 		AE6C984889C032F16CF9F315 /* Pods-rabbit-rabbitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rabbit-rabbitTests.debug.xcconfig"; path = "Target Support Files/Pods-rabbit-rabbitTests/Pods-rabbit-rabbitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B554730984D649269CE87BCC /* Pods_rabbit_rabbitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rabbit_rabbitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -93,7 +94,8 @@
 		13B07FAE1A68108700A75B9A /* rabbit */ = {
 			isa = PBXGroup;
 			children = (
-				A7BFCF4C2C52CA1D00F43330 /* Fonts */,
+				A7EDC8322C5910BE00852010 /* Fonts */,
+				A7BFCF4E2C52D1CC00F43330 /* rabbit.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -126,7 +128,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				A763EFBA2C5250D000C853B9 /* GoogleService-Info.plist */,
+				A7BFCF512C52DA2200F43330 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* rabbit */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* rabbitTests */,
@@ -253,10 +255,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7BFCF4D2C52CA1D00F43330 /* Fonts in Resources */,
+				A7EDC8332C5910BE00852010 /* Fonts in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				A7BFCF522C52DA2200F43330 /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				A763EFBB2C5250D000C853B9 /* GoogleService-Info.plist in Resources */,
 				CC914A62FA21DC428C5A8930 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,7 +495,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = rabbit/rabbit.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7BKJ49FH5H;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = rabbit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -507,6 +511,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.osaka.rabbit;
 				PRODUCT_NAME = rabbit;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -520,7 +525,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = rabbit/rabbit.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7BKJ49FH5H;
 				INFOPLIST_FILE = rabbit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -533,6 +540,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.osaka.rabbit;
 				PRODUCT_NAME = rabbit;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -623,7 +631,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -706,7 +717,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;

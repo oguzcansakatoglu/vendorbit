@@ -2,6 +2,7 @@ import React, {createContext, useContext, useEffect, useState} from 'react';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {appleAuth} from '@invertase/react-native-apple-authentication';
 
 interface AuthContextData {
   user: FirebaseAuthTypes.User | null;
@@ -91,6 +92,62 @@ export const Auth: React.FC<{children: React.ReactNode}> = ({children}) => {
     }
   };
 
+  const appleSignIn = async () => {
+    try {
+      console.log('Apple Sign-In: Starting');
+
+      // Check if Apple Authentication is supported
+      const isSupported = await appleAuth.isSupported;
+      if (!isSupported) {
+        console.log('Apple Authentication is not supported on this device');
+        return null;
+      }
+
+      console.log('Apple Sign-In: Performing auth request');
+      const appleAuthRequestResponse = await appleAuth.performRequest({
+        requestedOperation: appleAuth.Operation.LOGIN,
+        requestedScopes: [appleAuth.Scope.FULL_NAME, appleAuth.Scope.EMAIL],
+      });
+      console.log('Apple Sign-In: Auth request completed');
+      console.log(
+        'Apple Auth Response:',
+        JSON.stringify(appleAuthRequestResponse, null, 2),
+      );
+
+      // Ensure Apple returned a user identityToken
+      if (!appleAuthRequestResponse.identityToken) {
+        throw new Error('Apple Sign-In failed - no identity token returned');
+      }
+
+      console.log('Apple Sign-In: Identity token received');
+
+      // Create a Firebase credential from the response
+      const {identityToken, nonce} = appleAuthRequestResponse;
+      console.log('Creating Firebase credential');
+      const appleCredential = auth.AppleAuthProvider.credential(
+        identityToken,
+        nonce,
+      );
+      console.log('Firebase credential created');
+
+      // Sign the user in with the credential
+      console.log('Signing in with Firebase');
+      const userCredential = await auth().signInWithCredential(appleCredential);
+      console.log('Firebase sign-in successful');
+      console.log('User:', JSON.stringify(userCredential.user, null, 2));
+
+      return userCredential;
+    } catch (error) {
+      console.error('Apple Sign-In Error:', error);
+      if (error.code) {
+        console.error('Error code:', error.code);
+      }
+      return null;
+    } finally {
+      console.log('Apple Sign-In: Process completed');
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -101,6 +158,7 @@ export const Auth: React.FC<{children: React.ReactNode}> = ({children}) => {
         signOut,
         googleSignIn,
         anonymousSignIn,
+        appleSignIn,
       }}>
       {children}
     </AuthContext.Provider>

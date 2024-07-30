@@ -14,6 +14,7 @@
     "@formatjs/intl-locale": "^4.0.0",
     "@formatjs/intl-pluralrules": "^5.2.14",
     "@formatjs/intl-relativetimeformat": "^11.2.14",
+    "@invertase/react-native-apple-authentication": "^2.3.0",
     "@react-native-firebase/app": "^20.3.0",
     "@react-native-firebase/auth": "^20.3.0",
     "@react-native-google-signin/google-signin": "^12.2.1",

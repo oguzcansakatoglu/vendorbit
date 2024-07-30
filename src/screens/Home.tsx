@@ -20,6 +20,7 @@ const Test = () => {
   return (
     <View style={[{backgroundColor: colors.background, height: '100%'}]}>
       <Ionicons name="business" size={20} />
+      <Ionicons name="camera" size={20} />
       <Modal
         isVisible={visible}
         loading={loading}

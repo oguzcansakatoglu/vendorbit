@@ -1,5 +1,6 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
+import {AppleButton} from '@invertase/react-native-apple-authentication';
 import React from 'react';
 import {RootStackParamList} from '../../App';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -19,7 +20,7 @@ type Props = {
 function WelcomeScreen({navigation}: Props) {
   const {colors} = useTheme();
   const {t, i18n} = useTranslation();
-  const {googleSignIn, anonymousSignIn} = useAuth();
+  const {googleSignIn, anonymousSignIn, appleSignIn} = useAuth();
 
   const toggleLanguage = () => {
     const newLang = i18n.language === 'en' ? 'tr' : 'en';
@@ -59,6 +60,22 @@ function WelcomeScreen({navigation}: Props) {
           Anonim
         </Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.button, {backgroundColor: colors.text}]}
+        onPress={appleSignIn}>
+        <Text style={[styles.buttonText, {color: colors.secondary}]}>
+          Apple
+        </Text>
+      </TouchableOpacity>
+      {/* <AppleButton
+        buttonStyle={AppleButton.Style.WHITE}
+        buttonType={AppleButton.Type.SIGN_IN}
+        style={{
+          width: 160,
+          height: 45,
+        }}
+        onPress={appleSignIn}
+      /> */}
       <TouchableOpacity
         style={[styles.languageButton, {backgroundColor: colors.accent}]}
         onPress={toggleLanguage}>
