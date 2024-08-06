@@ -12,6 +12,7 @@ import React from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {createStackNavigator} from '@react-navigation/stack';
 import i18n from '@utils/i18n';
+
 // hello
 const Stack = createStackNavigator();
 
@@ -24,7 +25,7 @@ export type RootStackParamList = {
 
 function MainApp(): React.JSX.Element {
   const {isDarkMode, toggleTheme, colors} = useTheme();
-  const {user, loading, signIn, signUp, signOut} = useAuth();
+  const {user, loading, signIn, signUp} = useAuth();
 
   if (loading) {
     return (
@@ -51,13 +52,7 @@ function MainApp(): React.JSX.Element {
             name="Main"
             component={Home}
             options={{
-              headerRight: () => (
-                <Text
-                  onPress={signOut}
-                  style={{color: colors.text, marginRight: 10}}>
-                  Sign Out
-                </Text>
-              ),
+              headerShown: false,
             }}
           />
         ) : (

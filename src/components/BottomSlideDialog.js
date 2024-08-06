@@ -116,14 +116,12 @@ const BottomSlideDialog = ({
       elevation: 2,
       minWidth: 100,
     },
-    buttonCancel: {
+
+    buttonConfirm: {
       backgroundColor: colors.border,
     },
-    buttonConfirm: {
-      backgroundColor: colors.primary,
-    },
     textStyle: {
-      color: colors.background,
+      color: colors.text,
       fontWeight: 'bold',
       textAlign: 'center',
     },
@@ -147,10 +145,8 @@ const BottomSlideDialog = ({
               <Text style={styles.title}>{title}</Text>
               <Text style={styles.message}>{message}</Text>
               <View style={styles.buttonsContainer}>
-                <TouchableOpacity
-                  style={[styles.button, styles.buttonCancel]}
-                  onPress={onCancel}>
-                  <Text style={styles.textStyle}>{cancelText}</Text>
+                <TouchableOpacity style={styles.button} onPress={onCancel}>
+                  <Text style={[styles.textStyle]}>{cancelText}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={[styles.button, styles.buttonConfirm]}

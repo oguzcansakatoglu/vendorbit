@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
 import {
+  Image,
   ScrollView,
   StyleSheet,
   Switch,
@@ -7,9 +7,12 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import React, {useEffect, useState} from 'react';
 
 import {BottomSlideDialog} from '@components/index';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import firestore from '@react-native-firebase/firestore';
+import {useAuth} from '../../contexts/Auth';
 import {useNavigation} from '@react-navigation/native';
 import {useTheme} from '@utils/ThemeContext';
 import {useTranslation} from 'react-i18next';
@@ -18,7 +21,25 @@ const Profile = () => {
   const {colors, isDark, toggleTheme} = useTheme();
   const {t} = useTranslation();
   const navigation = useNavigation();
+  const {user, signOut} = useAuth();
   const [logoutDialogVisible, setLogoutDialogVisible] = useState(false);
+  const [userProfile, setUserProfile] = useState(null);
+
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      if (user) {
+        const userDoc = await firestore()
+          .collection('Users')
+          .doc(user.uid)
+          .get();
+        if (userDoc.exists) {
+          setUserProfile(userDoc.data());
+        }
+      }
+    };
+
+    fetchUserProfile();
+  }, [user]);
 
   const styles = StyleSheet.create({
     container: {
@@ -26,31 +47,31 @@ const Profile = () => {
       backgroundColor: colors.background,
     },
     profileInfo: {
-      padding: 16,
+      padding: 20,
       borderBottomWidth: 1,
       borderBottomColor: colors.border,
+      alignItems: 'center',
     },
     avatar: {
-      width: 60,
-      height: 60,
-      borderRadius: 30,
-      backgroundColor: colors.primary,
-      marginRight: 16,
+      width: 100,
+      height: 100,
+      borderRadius: 50,
+      marginBottom: 16,
     },
     name: {
-      fontSize: 18,
+      fontSize: 22,
       fontWeight: 'bold',
       color: colors.text,
+      marginBottom: 8,
     },
     email: {
-      fontSize: 14,
+      fontSize: 16,
       color: colors.text,
-      marginTop: 4,
+      marginBottom: 4,
     },
     phone: {
-      fontSize: 14,
+      fontSize: 16,
       color: colors.text,
-      marginTop: 4,
     },
     menuItem: {
       flexDirection: 'row',
@@ -63,12 +84,18 @@ const Profile = () => {
       marginLeft: 16,
       fontSize: 16,
       color: colors.text,
+      flex: 1,
     },
     themeSwitch: {
       marginLeft: 'auto',
     },
     logoutText: {
-      color: 'red',
+      color: colors.error,
+    },
+    version: {
+      textAlign: 'center',
+      marginTop: 20,
+      color: colors.textSecondary,
     },
   });
 
@@ -78,29 +105,15 @@ const Profile = () => {
 
   const confirmLogout = () => {
     setLogoutDialogVisible(false);
-    // Implement your logout logic here
-    console.log('User logged out');
-    // For example, you might clear the auth token and navigate to the login screen:
-    // AsyncStorage.removeItem('authToken');
-    // navigation.reset({
-    //   index: 0,
-    //   routes: [{ name: 'Login' }],
-    // });
+    signOut();
   };
 
   const MenuItem = ({icon, text, onPress, rightElement, textStyle}) => (
     <TouchableOpacity style={styles.menuItem} onPress={onPress}>
-      <Icon name={icon} size={24} color={colors.primary} />
+      <Icon name={icon} size={24} color={colors.text} />
       <Text style={[styles.menuText, textStyle]}>{text}</Text>
-      {rightElement ? (
-        rightElement
-      ) : (
-        <Icon
-          name="chevron-right"
-          size={24}
-          color={colors.text}
-          style={{marginLeft: 'auto'}}
-        />
+      {rightElement || (
+        <Icon name="chevron-right" size={24} color={colors.text} />
       )}
     </TouchableOpacity>
   );
@@ -108,25 +121,16 @@ const Profile = () => {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <View style={styles.profileInfo}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <View style={styles.avatar} />
-            <View>
-              <Text style={styles.name}>o saka</Text>
-              <Text style={styles.email}>sakatogluoguzcan@gmail.com</Text>
-              <Text style={styles.phone}>+90 (532) 064-5411</Text>
-            </View>
-          </View>
-        </View>
+        <MenuItem
+          icon="person"
+          text={t('editProfile')}
+          onPress={() => navigation.navigate('EditProfile')}
+        />
         <MenuItem
           icon="location-on"
           text={t('addresses')}
           onPress={() => navigation.navigate('Addresses')}
         />
-        <MenuItem icon="favorite" text={t('favoriteBusinesses')} />
-        <MenuItem icon="history" text={t('orderHistory')} />
-        <MenuItem icon="payment" text={t('paymentMethods')} />
-        <MenuItem icon="receipt" text={t('invoiceInformation')} />
         <MenuItem
           icon="language"
           text={t('language')}
@@ -146,11 +150,27 @@ const Profile = () => {
           }
         />
         <MenuItem
+          icon="lock"
+          text={t('changePassword')}
+          onPress={() => navigation.navigate('ChangePassword')}
+        />
+        <MenuItem
+          icon="help"
+          text={t('help')}
+          onPress={() => navigation.navigate('Help')}
+        />
+        <MenuItem
+          icon="info"
+          text={t('about')}
+          onPress={() => navigation.navigate('About')}
+        />
+        <MenuItem
           icon="exit-to-app"
           text={t('logout')}
           onPress={handleLogout}
           textStyle={styles.logoutText}
         />
+        <Text style={styles.version}>{t('version')} 1.0.0</Text>
       </ScrollView>
       <BottomSlideDialog
         visible={logoutDialogVisible}

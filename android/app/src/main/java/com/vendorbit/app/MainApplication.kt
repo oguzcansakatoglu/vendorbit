@@ -1,4 +1,4 @@
-package com.rabbit
+package com.vendorbit.app
 
 import android.app.Application
 import com.facebook.react.PackageList

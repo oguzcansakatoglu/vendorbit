@@ -1,48 +1,19 @@
-/* eslint-disable react/no-unstable-nested-components */
-import {Button, Switch, Text, View} from 'react-native';
-import React, {useState} from 'react';
+import {
+  OrdersStackScreen,
+  ProductsStackScreen,
+  ProfileStackScreen,
+  VendorStackScreen,
+} from '@screens/index';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {Modal} from '@components/index';
-import {ProfileStackScreen} from '@screens/index';
+import React from 'react';
+/* eslint-disable react/no-unstable-nested-components */
+import {View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import {useTheme} from '@utils/ThemeContext';
-import {useTranslation} from 'react-i18next';
 
 const Tab = createBottomTabNavigator();
-const Test = () => {
-  const {colors} = useTheme();
-
-  const {t} = useTranslation();
-  const [loading, setLoading] = useState(false);
-  const [visible, setVisible] = useState(false);
-  return (
-    <View style={[{backgroundColor: colors.background, height: '100%'}]}>
-      <Ionicons name="business" size={20} />
-      <Ionicons name="camera" size={20} />
-      <Modal
-        isVisible={visible}
-        loading={loading}
-        title={'title'}
-        onClose={() => setVisible(false)}
-        onConfirm={() => {
-          setLoading(true);
-          setTimeout(() => {
-            setLoading(false);
-            setVisible(false);
-          }, 2000);
-        }}
-        confirmButton={t('confirm')}
-        children={
-          <View>
-            <Text>hello</Text>
-          </View>
-        }
-      />
-    </View>
-  );
-};
 
 export type BottomTabParamList = {
   Home: undefined;
@@ -51,11 +22,12 @@ export type BottomTabParamList = {
 };
 
 function Home() {
-  const {isDarkMode, toggleTheme, colors} = useTheme();
+  const {colors} = useTheme();
 
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
+        headerShown: false,
         headerStyle: {
           backgroundColor: colors.primary,
         },
@@ -65,8 +37,16 @@ function Home() {
         },
         tabBarStyle: (route => {
           const routeName = getFocusedRouteNameFromRoute(route) ?? '';
-
-          if (['Addresses', 'Language']?.includes(routeName)) {
+          console.log({routeName});
+          if (
+            [
+              'Addresses',
+              'Language',
+              'CreateOrder',
+              'VendorDetail',
+              'AddVendor',
+            ]?.includes(routeName)
+          ) {
             return {display: 'none'};
           }
           return {
@@ -74,10 +54,12 @@ function Home() {
           };
         })(route),
         tabBarIcon: ({focused, color, size}) => {
+          console.log({color});
           let iconName;
           switch (route.name) {
             case 'Home':
               iconName = focused ? 'business' : 'business-outline';
+
               break;
             case 'ProfileStack':
               iconName = focused ? 'person' : 'person-outline';
@@ -85,6 +67,13 @@ function Home() {
             case 'Settings':
               iconName = focused ? 'compass' : 'compass-outline';
               break;
+            case 'Products':
+              iconName = focused ? 'cube' : 'cube-outline';
+              break;
+            case 'OrderStack':
+              iconName = focused ? 'cart' : 'cart-outline';
+              break;
+
             default:
               iconName = 'help-circle';
           }
@@ -95,34 +84,14 @@ function Home() {
             </View>
           );
         },
-        tabBarActiveTintColor: 'black',
-        tabBarInactiveTintColor: 'black',
+        tabBarActiveTintColor: colors.text,
+        tabBarInactiveTintColor: colors.textSecondary,
         tabBarLabel: () => null,
       })}>
-      <Tab.Screen
-        name="Home"
-        component={Test}
-        options={{
-          headerRight: () => (
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                marginRight: 10,
-              }}>
-              <Text style={{color: colors.text, marginRight: 5}}>
-                {isDarkMode ? 'Dark' : 'Light'}
-              </Text>
-              <Switch
-                trackColor={{false: colors.border, true: colors.primary}}
-                thumbColor={isDarkMode ? colors.accent : colors.secondary}
-                onValueChange={toggleTheme}
-                value={isDarkMode}
-              />
-            </View>
-          ),
-        }}
-      />
+      <Tab.Screen name="Home" component={VendorStackScreen} />
+
+      <Tab.Screen name="Products" component={ProductsStackScreen} />
+      <Tab.Screen name="OrderStack" component={OrdersStackScreen} />
       <Tab.Screen
         name="ProfileStack"
         component={ProfileStackScreen}
@@ -130,7 +99,6 @@ function Home() {
           headerShown: false,
         }}
       />
-      <Tab.Screen name="Settings" component={Test} />
     </Tab.Navigator>
   );
 }

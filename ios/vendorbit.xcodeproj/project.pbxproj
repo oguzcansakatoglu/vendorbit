@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* rabbitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* rabbitTests.m */; };
+		00E356F31AD99517003FC87E /* vendorbitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* vendorbitTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		162C46FD10866F5888BB4708 /* Pods_rabbit_rabbitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B554730984D649269CE87BCC /* Pods_rabbit_rabbitTests.framework */; };
-		6F5B9B54F1823A83C098B95E /* Pods_rabbit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A61FADCE2172EF9930A56521 /* Pods_rabbit.framework */; };
+		2A99C4FCF9B6821149A197B2 /* Pods_vendorbit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85469A6E41CEBACEC11554CF /* Pods_vendorbit.framework */; };
+		80401BCDDA2AC9CBF1402AD3 /* Pods_vendorbit_vendorbitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8A0050D04A4A3A109A64B9 /* Pods_vendorbit_vendorbitTests.framework */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		A7BFCF522C52DA2200F43330 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7BFCF512C52DA2200F43330 /* GoogleService-Info.plist */; };
 		A7EDC8332C5910BE00852010 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = A7EDC8322C5910BE00852010 /* Fonts */; };
@@ -25,32 +25,32 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = rabbit;
+			remoteInfo = vendorbit;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* rabbitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rabbitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* vendorbitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vendorbitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* rabbitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = rabbitTests.m; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* rabbit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rabbit.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = rabbit/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = rabbit/AppDelegate.mm; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = rabbit/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = rabbit/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = rabbit/main.m; sourceTree = "<group>"; };
-		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = rabbit/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		25C7FB3B8783571A77FCD756 /* Pods-rabbit-rabbitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rabbit-rabbitTests.release.xcconfig"; path = "Target Support Files/Pods-rabbit-rabbitTests/Pods-rabbit-rabbitTests.release.xcconfig"; sourceTree = "<group>"; };
-		510546787E8E35E66DA6CEB8 /* Pods-rabbit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rabbit.release.xcconfig"; path = "Target Support Files/Pods-rabbit/Pods-rabbit.release.xcconfig"; sourceTree = "<group>"; };
-		6F1781678585F420BA0FF2AE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = rabbit/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = rabbit/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9CE1D2D71A13D9727E80EA78 /* Pods-rabbit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rabbit.debug.xcconfig"; path = "Target Support Files/Pods-rabbit/Pods-rabbit.debug.xcconfig"; sourceTree = "<group>"; };
-		A61FADCE2172EF9930A56521 /* Pods_rabbit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rabbit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7BFCF4E2C52D1CC00F43330 /* rabbit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = rabbit.entitlements; path = rabbit/rabbit.entitlements; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* vendorbitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = vendorbitTests.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* vendorbit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vendorbit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = vendorbit/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = vendorbit/AppDelegate.mm; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = vendorbit/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = vendorbit/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = vendorbit/main.m; sourceTree = "<group>"; };
+		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = vendorbit/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		25C7FB3B8783571A77FCD756 /* Pods-vendorbit-vendorbitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vendorbit-vendorbitTests.release.xcconfig"; path = "Target Support Files/Pods-vendorbit-vendorbitTests/Pods-vendorbit-vendorbitTests.release.xcconfig"; sourceTree = "<group>"; };
+		510546787E8E35E66DA6CEB8 /* Pods-vendorbit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vendorbit.release.xcconfig"; path = "Target Support Files/Pods-vendorbit/Pods-vendorbit.release.xcconfig"; sourceTree = "<group>"; };
+		6F1781678585F420BA0FF2AE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = vendorbit/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = vendorbit/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		85469A6E41CEBACEC11554CF /* Pods_vendorbit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vendorbit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CE1D2D71A13D9727E80EA78 /* Pods-vendorbit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vendorbit.debug.xcconfig"; path = "Target Support Files/Pods-vendorbit/Pods-vendorbit.debug.xcconfig"; sourceTree = "<group>"; };
+		A7BFCF4E2C52D1CC00F43330 /* vendorbit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = vendorbit.entitlements; path = vendorbit/vendorbit.entitlements; sourceTree = "<group>"; };
 		A7BFCF512C52DA2200F43330 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A7EDC8322C5910BE00852010 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = "../node_modules/react-native-vector-icons/Fonts"; sourceTree = "<group>"; };
-		AE6C984889C032F16CF9F315 /* Pods-rabbit-rabbitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rabbit-rabbitTests.debug.xcconfig"; path = "Target Support Files/Pods-rabbit-rabbitTests/Pods-rabbit-rabbitTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B554730984D649269CE87BCC /* Pods_rabbit_rabbitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rabbit_rabbitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE6C984889C032F16CF9F315 /* Pods-vendorbit-vendorbitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vendorbit-vendorbitTests.debug.xcconfig"; path = "Target Support Files/Pods-vendorbit-vendorbitTests/Pods-vendorbit-vendorbitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CD8A0050D04A4A3A109A64B9 /* Pods_vendorbit_vendorbitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vendorbit_vendorbitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				162C46FD10866F5888BB4708 /* Pods_rabbit_rabbitTests.framework in Frameworks */,
+				80401BCDDA2AC9CBF1402AD3 /* Pods_vendorbit_vendorbitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,20 +67,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F5B9B54F1823A83C098B95E /* Pods_rabbit.framework in Frameworks */,
+				2A99C4FCF9B6821149A197B2 /* Pods_vendorbit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* rabbitTests */ = {
+		00E356EF1AD99517003FC87E /* vendorbitTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* rabbitTests.m */,
+				00E356F21AD99517003FC87E /* vendorbitTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = rabbitTests;
+			path = vendorbitTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -91,11 +91,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* rabbit */ = {
+		13B07FAE1A68108700A75B9A /* vendorbit */ = {
 			isa = PBXGroup;
 			children = (
 				A7EDC8322C5910BE00852010 /* Fonts */,
-				A7BFCF4E2C52D1CC00F43330 /* rabbit.entitlements */,
+				A7BFCF4E2C52D1CC00F43330 /* vendorbit.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -105,15 +105,15 @@
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				6F1781678585F420BA0FF2AE /* PrivacyInfo.xcprivacy */,
 			);
-			name = rabbit;
+			name = vendorbit;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				A61FADCE2172EF9930A56521 /* Pods_rabbit.framework */,
-				B554730984D649269CE87BCC /* Pods_rabbit_rabbitTests.framework */,
+				85469A6E41CEBACEC11554CF /* Pods_vendorbit.framework */,
+				CD8A0050D04A4A3A109A64B9 /* Pods_vendorbit_vendorbitTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -129,9 +129,9 @@
 			isa = PBXGroup;
 			children = (
 				A7BFCF512C52DA2200F43330 /* GoogleService-Info.plist */,
-				13B07FAE1A68108700A75B9A /* rabbit */,
+				13B07FAE1A68108700A75B9A /* vendorbit */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* rabbitTests */,
+				00E356EF1AD99517003FC87E /* vendorbitTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
@@ -144,8 +144,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* rabbit.app */,
-				00E356EE1AD99517003FC87E /* rabbitTests.xctest */,
+				13B07F961A680F5B00A75B9A /* vendorbit.app */,
+				00E356EE1AD99517003FC87E /* vendorbitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,10 +153,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9CE1D2D71A13D9727E80EA78 /* Pods-rabbit.debug.xcconfig */,
-				510546787E8E35E66DA6CEB8 /* Pods-rabbit.release.xcconfig */,
-				AE6C984889C032F16CF9F315 /* Pods-rabbit-rabbitTests.debug.xcconfig */,
-				25C7FB3B8783571A77FCD756 /* Pods-rabbit-rabbitTests.release.xcconfig */,
+				9CE1D2D71A13D9727E80EA78 /* Pods-vendorbit.debug.xcconfig */,
+				510546787E8E35E66DA6CEB8 /* Pods-vendorbit.release.xcconfig */,
+				AE6C984889C032F16CF9F315 /* Pods-vendorbit-vendorbitTests.debug.xcconfig */,
+				25C7FB3B8783571A77FCD756 /* Pods-vendorbit-vendorbitTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -164,9 +164,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* rabbitTests */ = {
+		00E356ED1AD99517003FC87E /* vendorbitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "rabbitTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "vendorbitTests" */;
 			buildPhases = (
 				37BDF5A5D55DDD22AABA7035 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -180,14 +180,13 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = rabbitTests;
-			productName = rabbitTests;
-			productReference = 00E356EE1AD99517003FC87E /* rabbitTests.xctest */;
+			name = vendorbitTests;
+			productReference = 00E356EE1AD99517003FC87E /* vendorbitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* rabbit */ = {
+		13B07F861A680F5B00A75B9A /* vendorbit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "rabbit" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "vendorbit" */;
 			buildPhases = (
 				4663C38F4E5DF731124F5963 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
@@ -202,9 +201,9 @@
 			);
 			dependencies = (
 			);
-			name = rabbit;
-			productName = rabbit;
-			productReference = 13B07F961A680F5B00A75B9A /* rabbit.app */;
+			name = vendorbit;
+			productName = vendorbit;
+			productReference = 13B07F961A680F5B00A75B9A /* vendorbit.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -224,7 +223,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "rabbit" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "vendorbit" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -237,8 +236,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* rabbit */,
-				00E356ED1AD99517003FC87E /* rabbitTests */,
+				13B07F861A680F5B00A75B9A /* vendorbit */,
+				00E356ED1AD99517003FC87E /* vendorbitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -288,15 +287,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-rabbit-rabbitTests/Pods-rabbit-rabbitTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-vendorbit-vendorbitTests/Pods-vendorbit-vendorbitTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-rabbit-rabbitTests/Pods-rabbit-rabbitTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-vendorbit-vendorbitTests/Pods-vendorbit-vendorbitTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rabbit-rabbitTests/Pods-rabbit-rabbitTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-vendorbit-vendorbitTests/Pods-vendorbit-vendorbitTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		37BDF5A5D55DDD22AABA7035 /* [CP] Check Pods Manifest.lock */ = {
@@ -314,7 +313,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-rabbit-rabbitTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-vendorbit-vendorbitTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -336,7 +335,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-rabbit-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-vendorbit-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -349,15 +348,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-rabbit/Pods-rabbit-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-vendorbit/Pods-vendorbit-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-rabbit/Pods-rabbit-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-vendorbit/Pods-vendorbit-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rabbit/Pods-rabbit-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-vendorbit/Pods-vendorbit-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		90E864F8F5A19E313741EB36 /* [CP-User] [RNFB] Core Configuration */ = {
@@ -379,15 +378,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-rabbit/Pods-rabbit-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-vendorbit/Pods-vendorbit-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-rabbit/Pods-rabbit-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-vendorbit/Pods-vendorbit-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rabbit/Pods-rabbit-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-vendorbit/Pods-vendorbit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FCF1BD5C871460AA86DC937F /* [CP] Copy Pods Resources */ = {
@@ -396,15 +395,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-rabbit-rabbitTests/Pods-rabbit-rabbitTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-vendorbit-vendorbitTests/Pods-vendorbit-vendorbitTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-rabbit-rabbitTests/Pods-rabbit-rabbitTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-vendorbit-vendorbitTests/Pods-vendorbit-vendorbitTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rabbit-rabbitTests/Pods-rabbit-rabbitTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-vendorbit-vendorbitTests/Pods-vendorbit-vendorbitTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -414,7 +413,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* rabbitTests.m in Sources */,
+				00E356F31AD99517003FC87E /* vendorbitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,7 +431,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* rabbit */;
+			target = 13B07F861A680F5B00A75B9A /* vendorbit */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -440,14 +439,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AE6C984889C032F16CF9F315 /* Pods-rabbit-rabbitTests.debug.xcconfig */;
+			baseConfigurationReference = AE6C984889C032F16CF9F315 /* Pods-vendorbit-vendorbitTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = rabbitTests/Info.plist;
+				INFOPLIST_FILE = vendorbitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -459,19 +458,19 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.vendorbit.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rabbit.app/rabbit";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/vendorbit.app/vendorbit";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 25C7FB3B8783571A77FCD756 /* Pods-rabbit-rabbitTests.release.xcconfig */;
+			baseConfigurationReference = 25C7FB3B8783571A77FCD756 /* Pods-vendorbit-vendorbitTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = rabbitTests/Info.plist;
+				INFOPLIST_FILE = vendorbitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -483,23 +482,24 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.vendorbit.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rabbit.app/rabbit";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/vendorbit.app/vendorbit";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9CE1D2D71A13D9727E80EA78 /* Pods-rabbit.debug.xcconfig */;
+			baseConfigurationReference = 9CE1D2D71A13D9727E80EA78 /* Pods-vendorbit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = rabbit/rabbit.entitlements;
+				CODE_SIGN_ENTITLEMENTS = vendorbit/vendorbit.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7BKJ49FH5H;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = rabbit/Info.plist;
+				INFOPLIST_FILE = vendorbit/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = vendorbit;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -510,9 +510,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.osaka.rabbit;
-				PRODUCT_NAME = rabbit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vendorbit.app;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.osaka.vendorbit;
+				PRODUCT_NAME = vendorbit;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -521,14 +521,15 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 510546787E8E35E66DA6CEB8 /* Pods-rabbit.release.xcconfig */;
+			baseConfigurationReference = 510546787E8E35E66DA6CEB8 /* Pods-vendorbit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = rabbit/rabbit.entitlements;
+				CODE_SIGN_ENTITLEMENTS = vendorbit/vendorbit.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7BKJ49FH5H;
-				INFOPLIST_FILE = rabbit/Info.plist;
+				INFOPLIST_FILE = vendorbit/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = vendorbit;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -539,9 +540,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.osaka.rabbit;
-				PRODUCT_NAME = rabbit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vendorbit.app;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.osaka.vendorbit;
+				PRODUCT_NAME = vendorbit;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -731,7 +732,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "rabbitTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "vendorbitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -740,7 +741,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "rabbit" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "vendorbit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -749,7 +750,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "rabbit" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "vendorbit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
