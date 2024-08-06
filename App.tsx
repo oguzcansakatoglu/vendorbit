@@ -12,7 +12,7 @@ import React from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {createStackNavigator} from '@react-navigation/stack';
 import i18n from '@utils/i18n';
-
+// hello
 const Stack = createStackNavigator();
 
 export type RootStackParamList = {
