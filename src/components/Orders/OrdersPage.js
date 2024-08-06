@@ -10,84 +10,135 @@ import {
 } from 'react-native';
 import React, {useCallback, useEffect, useState} from 'react';
 
+import {ListItem} from 'react-native-elements';
 import firestore from '@react-native-firebase/firestore';
+import {useNavigation} from '@react-navigation/native';
 import {useTheme} from '@utils/ThemeContext';
+import {useTranslation} from 'react-i18next';
 
-const OrdersPage = ({navigation}) => {
-  const {colors} = useTheme();
+const ITEMS_PER_PAGE = 10;
+
+const OrdersPage = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [lastDoc, setLastDoc] = useState(null);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [allLoaded, setAllLoaded] = useState(false);
+  const navigation = useNavigation();
+  const {colors} = useTheme();
+  const {t} = useTranslation();
 
-  const fetchOrders = useCallback(() => {
-    const unsubscribe = firestore()
-      .collection('Orders')
-      .orderBy('createdAt', 'desc')
-      .onSnapshot(
-        querySnapshot => {
-          const orderList = [];
-          querySnapshot.forEach(doc => {
-            orderList.push({
-              id: doc.id,
-              ...doc.data(),
-            });
-          });
-          setOrders(orderList);
+  const fetchOrders = useCallback(
+    async (lastVisible = null) => {
+      try {
+        let query = firestore()
+          .collection('Orders')
+          .orderBy('createdAt', 'desc')
+          .limit(ITEMS_PER_PAGE);
+        if (lastVisible) {
+          query = query.startAfter(lastVisible);
+        }
+
+        const ordersSnapshot = await query.get();
+        if (ordersSnapshot.empty && !lastVisible) {
+          setOrders([]);
+          setAllLoaded(true);
           setLoading(false);
           setRefreshing(false);
-        },
-        error => {
-          console.error('Error fetching orders: ', error);
-          Alert.alert('Error', 'Failed to fetch orders');
-          setLoading(false);
-          setRefreshing(false);
-        },
-      );
+          return;
+        }
 
-    return unsubscribe;
-  }, []);
+        const lastVisible = ordersSnapshot.docs[ordersSnapshot.docs.length - 1];
+        setLastDoc(lastVisible);
+
+        const ordersData = ordersSnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        setOrders(prevOrders =>
+          lastVisible ? [...prevOrders, ...ordersData] : ordersData,
+        );
+        setAllLoaded(ordersData.length < ITEMS_PER_PAGE);
+      } catch (error) {
+        console.error('Error fetching orders:', error);
+        Alert.alert(t('Error'), t('Failed to fetch orders. Please try again.'));
+      } finally {
+        setLoading(false);
+        setRefreshing(false);
+        setLoadingMore(false);
+      }
+    },
+    [t],
+  );
 
   useEffect(() => {
-    const unsubscribe = fetchOrders();
-    return () => unsubscribe();
+    fetchOrders();
   }, [fetchOrders]);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
+    setLastDoc(null);
+    setAllLoaded(false);
     fetchOrders();
   }, [fetchOrders]);
 
-  const renderOrderItem = ({item}) => (
-    <TouchableOpacity
-      style={[styles.orderItem, {borderBottomColor: colors.border}]}
-      onPress={() => navigation.navigate('OrderDetail', {orderId: item.id})}>
-      <Text style={[styles.orderNumber, {color: colors.text}]}>
-        Order #{item.orderNumber}
-      </Text>
-      <Text style={{color: colors.textSecondary}}>
-        Customer: {item.customerName}
-      </Text>
-      <Text style={{color: colors.textSecondary}}>
-        Total: ${item.total.toFixed(2)}
-      </Text>
-      <Text style={[styles.statusText, {color: getStatusColor(item.status)}]}>
-        Status: {item.status}
-      </Text>
-    </TouchableOpacity>
+  const loadMoreOrders = useCallback(() => {
+    if (!allLoaded && !loadingMore) {
+      setLoadingMore(true);
+      fetchOrders(lastDoc);
+    }
+  }, [allLoaded, loadingMore, fetchOrders, lastDoc]);
+
+  const getStatusColor = useCallback(
+    status => {
+      switch (status.toLowerCase()) {
+        case 'pending':
+          return colors.warning;
+        case 'completed':
+          return colors.success;
+        case 'cancelled':
+          return colors.error;
+        default:
+          return colors.text;
+      }
+    },
+    [colors],
   );
 
-  const getStatusColor = status => {
-    switch (status.toLowerCase()) {
-      case 'pending':
-        return colors.warning;
-      case 'completed':
-        return colors.success;
-      case 'cancelled':
-        return colors.error;
-      default:
-        return colors.text;
-    }
-  };
+  const renderOrderItem = useCallback(
+    ({item}) => (
+      <ListItem
+        bottomDivider
+        onPress={() => navigation.navigate('OrderDetail', {orderId: item.id})}
+        containerStyle={[styles.listItem, {backgroundColor: colors.background}]}
+        accessible={true}
+        accessibilityLabel={`Order #${item.orderNumber}, Customer: ${
+          item.customerName
+        }, Total: $${item.total.toFixed(2)}, Status: ${item.status}`}>
+        <ListItem.Content>
+          <ListItem.Title style={[styles.orderNumber, {color: colors.text}]}>
+            {t('Order')} #{item.orderNumber}
+          </ListItem.Title>
+          <ListItem.Subtitle
+            style={[styles.orderDetail, {color: colors.textSecondary}]}>
+            {t('Customer')}: {item.customerName}
+          </ListItem.Subtitle>
+          <ListItem.Subtitle
+            style={[styles.orderDetail, {color: colors.textSecondary}]}>
+            {t('Total')}: ${item.total.toFixed(2)}
+          </ListItem.Subtitle>
+          <ListItem.Subtitle
+            style={[styles.statusText, {color: getStatusColor(item.status)}]}>
+            {t('Status')}: {item.status}
+          </ListItem.Subtitle>
+        </ListItem.Content>
+        <ListItem.Chevron />
+      </ListItem>
+    ),
+    [colors, navigation, t, getStatusColor],
+  );
 
   if (loading) {
     return (
@@ -104,13 +155,6 @@ const OrdersPage = ({navigation}) => {
 
   return (
     <View style={[styles.container, {backgroundColor: colors.background}]}>
-      <TouchableOpacity
-        style={[styles.createButton, {backgroundColor: colors.primary}]}
-        onPress={() => navigation.navigate('CreateOrder')}>
-        <Text style={[styles.createButtonText, {color: colors.text}]}>
-          Create New Order
-        </Text>
-      </TouchableOpacity>
       <FlatList
         data={orders}
         renderItem={renderOrderItem}
@@ -120,15 +164,35 @@ const OrdersPage = ({navigation}) => {
             refreshing={refreshing}
             onRefresh={onRefresh}
             colors={[colors.primary]}
-            tintColor={colors.primary}
           />
+        }
+        onEndReached={loadMoreOrders}
+        onEndReachedThreshold={0.1}
+        ListFooterComponent={() =>
+          loadingMore && (
+            <ActivityIndicator size="small" color={colors.primary} />
+          )
         }
         ListEmptyComponent={
           <Text style={[styles.emptyText, {color: colors.textSecondary}]}>
-            No orders found. Pull down to refresh.
+            {t('No orders found. Pull down to refresh.')}
           </Text>
         }
       />
+      <TouchableOpacity
+        style={[styles.fab, {backgroundColor: colors.text}]}
+        onPress={() => navigation.navigate('CreateOrder')}
+        accessibilityLabel={t('Create New Order')}>
+        <Text
+          style={[
+            styles.fabText,
+            {
+              color: colors.background,
+            },
+          ]}>
+          +
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -136,31 +200,22 @@ const OrdersPage = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
   },
   centered: {
     justifyContent: 'center',
     alignItems: 'center',
   },
-  createButton: {
-    padding: 15,
-    borderRadius: 5,
-    marginBottom: 15,
-  },
-  createButtonText: {
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-  orderItem: {
-    padding: 15,
-    borderBottomWidth: 1,
-    marginBottom: 10,
+  listItem: {
+    paddingVertical: 10,
   },
   orderNumber: {
-    fontSize: 18,
     fontWeight: 'bold',
+    fontSize: 16,
     marginBottom: 5,
+  },
+  orderDetail: {
+    fontSize: 14,
+    marginBottom: 2,
   },
   statusText: {
     fontWeight: 'bold',
@@ -170,6 +225,21 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 50,
     fontSize: 16,
+  },
+  fab: {
+    position: 'absolute',
+    width: 56,
+    height: 56,
+    alignItems: 'center',
+    justifyContent: 'center',
+    right: 20,
+    bottom: 20,
+    borderRadius: 28,
+    elevation: 8,
+  },
+  fabText: {
+    fontSize: 24,
+    fontWeight: 'bold',
   },
 });
 

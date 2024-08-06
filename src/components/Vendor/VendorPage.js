@@ -4,9 +4,11 @@ import {
   FlatList,
   RefreshControl,
   StyleSheet,
+  Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
-import {Button, Icon, ListItem} from 'react-native-elements';
+import {Icon, ListItem} from 'react-native-elements';
 import React, {useCallback, useEffect, useState} from 'react';
 
 import firestore from '@react-native-firebase/firestore';
@@ -160,22 +162,6 @@ const VendorPage = () => {
 
   return (
     <View style={[styles.container, {backgroundColor: colors.background}]}>
-      <Button
-        title={t('Add New Vendor')}
-        onPress={() => navigation.navigate('AddVendor')}
-        buttonStyle={[styles.addButton, {backgroundColor: colors.primary}]}
-        titleStyle={{color: colors.text}}
-        icon={
-          <Icon
-            name="plus-circle"
-            type="font-awesome-5"
-            color={colors.text}
-            containerStyle={styles.buttonIcon}
-          />
-        }
-        accessible={true}
-        accessibilityLabel={t('Add New Vendor')}
-      />
       <FlatList
         data={vendors}
         renderItem={renderVendorItem}
@@ -191,6 +177,20 @@ const VendorPage = () => {
           )
         }
       />
+      <TouchableOpacity
+        style={[styles.fab, {backgroundColor: colors.text}]}
+        onPress={() => navigation.navigate('AddVendor')}
+        accessibilityLabel={t('Add New Vendor')}>
+        <Text
+          style={[
+            styles.fabText,
+            {
+              color: colors.background,
+            },
+          ]}>
+          +
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -203,12 +203,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  addButton: {
-    margin: 10,
-  },
-  buttonIcon: {
-    marginRight: 10,
-  },
   listItem: {
     paddingVertical: 10,
   },
@@ -220,6 +214,22 @@ const styles = StyleSheet.create({
   vendorDetail: {
     fontSize: 14,
     marginBottom: 2,
+  },
+  fab: {
+    position: 'absolute',
+    width: 56,
+    height: 56,
+    alignItems: 'center',
+    justifyContent: 'center',
+    right: 20,
+    bottom: 20,
+    borderRadius: 28,
+    elevation: 8,
+  },
+  fabText: {
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold',
   },
 });
 
