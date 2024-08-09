@@ -1,12 +1,15 @@
 import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {changeLanguage} from '@utils/i18n'; // Import the changeLanguage function
 import {useTheme} from '@utils/ThemeContext';
+import {useTranslation} from 'react-i18next';
 
 const Language = () => {
   const {colors} = useTheme();
-  const [selectedLanguage, setSelectedLanguage] = useState('English');
+  const {i18n} = useTranslation();
+  const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
 
   const styles = StyleSheet.create({
     container: {
@@ -31,22 +34,22 @@ const Language = () => {
   });
 
   const languages = [
-    {id: '1', name: 'English'},
-    {id: '2', name: 'Türkçe'},
-    {id: '3', name: 'Español'},
-    {id: '4', name: 'Français'},
-    {id: '5', name: 'Deutsch'},
-    {id: '6', name: '日本語'},
-    {id: '7', name: '中文'},
+    {id: '1', name: 'English', code: 'en'},
+    {id: '2', name: 'Türkçe', code: 'tr'},
     // Add more languages as needed
   ];
+
+  const handleLanguageChange = async langCode => {
+    setSelectedLanguage(langCode);
+    await changeLanguage(langCode);
+  };
 
   const renderLanguageItem = ({item}) => (
     <TouchableOpacity
       style={styles.languageItem}
-      onPress={() => setSelectedLanguage(item.name)}>
+      onPress={() => handleLanguageChange(item.code)}>
       <Text style={styles.languageName}>{item.name}</Text>
-      {selectedLanguage === item.name && (
+      {selectedLanguage === item.code && (
         <Icon name="check" size={24} style={styles.selectedIcon} />
       )}
     </TouchableOpacity>
